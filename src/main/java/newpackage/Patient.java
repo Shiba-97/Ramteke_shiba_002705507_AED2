@@ -10,38 +10,31 @@ package newpackage;
  */
 public class Patient {
     
-    private String patientID;
-    private String primaryDoctorName;
-    private String prefferedPharmacy;
+    private String Username;
+    //private String primaryDoctorName;
+    //private String prefferedPharmacy;
     private VitalSignHistory vitalSignHistory;
+    public String Pass;
     
     public Patient() {
         this.vitalSignHistory = new VitalSignHistory();
     }
     
-    public String getPatientID() {
-        return patientID;
+    public String getPass(){
+        return Pass;
+      
+    }
+    public String getUsername() {
+        return Username;
     }
     
-    public void setPatientID(String patientID) {
-        this.patientID = patientID;
+    public void setPatientID(String Username) {
+        this.Username = Username;
     }
     
-    public String getPrimaryDoctorName() {
-        return primaryDoctorName;
-    }
     
-    public void setPrimaryDoctorName(String primaryDoctorName) {
-        this.primaryDoctorName = primaryDoctorName;
-    }
     
-    public String getPrefferedPharmacy() {
-        return prefferedPharmacy;
-    }
     
-    public void setPrefferedPharmacy(String prefferedPharmacy) {
-        this.prefferedPharmacy = prefferedPharmacy;
-    }
     
     public VitalSignHistory getVitalSignHistory() {
         return vitalSignHistory;
@@ -51,10 +44,18 @@ public class Patient {
         this.vitalSignHistory = vitalSignHistory;
     }
     
+    public void setPass(String Pass) {
+        this.Pass = Pass;
+    }
+    
     @Override
     public String toString()
     {
-        return String.valueOf(this.patientID);
+        return String.valueOf(this.Username);
+    }
+
+    String getpUsername() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

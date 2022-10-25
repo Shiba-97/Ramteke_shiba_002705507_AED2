@@ -12,10 +12,53 @@ public class Person {
      private String personName;
     private int age;
     private Patient patient;
+    private String Email;
+    private String City;
+    private String Community;
+    private String HouseNo;
+
+    public String getHouseNo() {
+        return HouseNo;
+    }
+
+    public void setHouseNo(String HouseNo) {
+        this.HouseNo = HouseNo;
+    }
+    
+
+    public Person() {
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String City) {
+        this.City = City;
+    }
+
+    public String getCommunity() {
+        return Community;
+    }
+
+    public void setCommunity(String Community) {
+        this.Community = Community;
+    }
+    
     
     public String getPersonName() {
         return personName;
     }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+    
+   
     
     public void setPersonName(String personName) {
         this.personName = personName;
