@@ -16,6 +16,15 @@ public class Person {
     private String City;
     private String Community;
     private String HouseNo;
+    private String Cellno;
+
+    public String getCellno() {
+        return Cellno;
+    }
+
+    public void setCellno(String Cellno) {
+        this.Cellno = Cellno;
+    }
 
     public String getHouseNo() {
         return HouseNo;

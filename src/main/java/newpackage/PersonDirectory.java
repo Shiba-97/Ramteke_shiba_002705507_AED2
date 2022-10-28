@@ -10,7 +10,15 @@ import java.util.ArrayList;
  * @author shiba
  */
 public class PersonDirectory {
-     private ArrayList<Person> personDirectory;
+     public ArrayList<Person> personDirectory;
+
+    public ArrayList<Person> getPersonDirectory() {
+        return personDirectory;
+    }
+
+    public void setPersonDirectory(ArrayList<Person> personDirectory) {
+        this.personDirectory = personDirectory;
+    }
     
     public PersonDirectory() {
         personDirectory = new ArrayList<>();

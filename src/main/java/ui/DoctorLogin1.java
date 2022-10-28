@@ -4,6 +4,8 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author shiba
@@ -32,18 +34,15 @@ public class DoctorLogin1 extends javax.swing.JPanel {
         tfID = new java.awt.TextField();
         LOGINbt = new java.awt.Button();
         tfPass = new javax.swing.JPasswordField();
-        AddBt = new javax.swing.JButton();
 
         LoginID.setText("LOGIN ID");
 
         lbPASS.setText("PASSWORD");
 
         LOGINbt.setLabel("LOGIN");
-
-        AddBt.setText("Add New");
-        AddBt.addActionListener(new java.awt.event.ActionListener() {
+        LOGINbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddBtActionPerformed(evt);
+                LOGINbtActionPerformed(evt);
             }
         });
 
@@ -52,7 +51,7 @@ public class DoctorLogin1 extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,9 +63,7 @@ public class DoctorLogin1 extends javax.swing.JPanel {
                             .addComponent(tfPass, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(424, 424, 424)
-                        .addComponent(LOGINbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(AddBt)))
+                        .addComponent(LOGINbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,14 +77,9 @@ public class DoctorLogin1 extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbPASS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(LOGINbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(AddBt)))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(115, 115, 115)
+                .addComponent(LOGINbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -108,13 +100,23 @@ public class DoctorLogin1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AddBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtActionPerformed
+    private void LOGINbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINbtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddBtActionPerformed
+        
+        
+         if(tfPass.toString().equals("Admin")&&tfID.getText().equals("Admin"))
+        {                  
+
+             JOptionPane.showMessageDialog(this," LOGIN SUCESSFUL ");
+        }
+            
+           else{
+                   JOptionPane.showMessageDialog(this,"INVALID LOGIN ID OR PASSWORD ");
+                   }
+    }//GEN-LAST:event_LOGINbtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddBt;
     private java.awt.Button LOGINbt;
     private java.awt.Label LoginID;
     private javax.swing.JPanel jPanel1;

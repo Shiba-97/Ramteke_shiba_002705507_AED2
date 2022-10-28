@@ -4,7 +4,9 @@
  */
 package ui;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,8 +16,12 @@ public class SystemLogin extends javax.swing.JPanel {
 
     /**
      * Creates new form SystemLogin
-     */
-    public SystemLogin() {
+     */JPanel RightPanel;
+     System System;
+     
+    public SystemLogin(JPanel RightPanel, System System) {
+        this.RightPanel= RightPanel;
+        this.System= System;
         initComponents();
     }
 
@@ -125,7 +131,11 @@ public class SystemLogin extends javax.swing.JPanel {
         {                  
 
                      JOptionPane.showMessageDialog(null, "Hello");
-            
+                    SysAdmin sa = new SysAdmin(RightPanel, System);
+                        RightPanel.add("SysAdmin", sa);
+                        CardLayout lay = (CardLayout)RightPanel.getLayout();
+                        lay.next(RightPanel);
+             
         }
             
            else{

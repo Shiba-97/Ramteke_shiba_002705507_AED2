@@ -106,7 +106,7 @@ public class CommunityLogin extends javax.swing.JPanel {
         {                  
 
                      //next page 
-            
+             JOptionPane.showMessageDialog(this,"Done ");
         }
             
            else{

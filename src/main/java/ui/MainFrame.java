@@ -7,6 +7,8 @@ package ui;
 //import java.awt.CardLayout;
 
 import java.awt.CardLayout;
+import javax.swing.JPanel;
+import newpackage.PersonDirectory;
 
 
 /**
@@ -18,9 +20,15 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    PersonDirectory personDirectory;
+    System system;
     public MainFrame() {
         initComponents();
+        this.personDirectory = new PersonDirectory();
+//        system = new System();
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,31 +174,45 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void SystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemActionPerformed
         // TODO add your handling code here:
-        SystemLogin sys = new SystemLogin();
-        //jSplitPane1.setRightComponent(sys);
+        SystemLogin sys = new SystemLogin(RightPanel,  system);
+       // jSplitPane1.setRightComponent(sys);
+        RightPanel.add("SystemLogin",sys);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+        
         
     }//GEN-LAST:event_SystemActionPerformed
 
     private void PatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientActionPerformed
         // TODO add your handling code here:
-        PatientLogin Pat = new PatientLogin(RightPanel);
-       // jSplitPane1.setRightComponent(Pat);
-       RightPanel.add(Pat);
+       PatientLogin Pat = new PatientLogin(RightPanel,personDirectory);
+        RightPanel.add("PatientLogin",Pat);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
-        layout.next(Pat);
+        layout.next(RightPanel);
+        
+        
+          
+       // jSplitPane1.setRightComponent(Pat);
               
     }//GEN-LAST:event_PatientActionPerformed
 
     private void ComunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComunityActionPerformed
         // TODO add your handling code here:
         CommunityLogin comm = new CommunityLogin();
-        jSplitPane1.setRightComponent(comm);
+       RightPanel.add("CommunityLogin",comm);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+        
+         //CommunityLogin comm = new CommunityLogin();
+       // jSplitPane1.setRightComponent(comm);
     }//GEN-LAST:event_ComunityActionPerformed
 
     private void HospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HospitalActionPerformed
         // TODO add your handling code here:
         HospitalLogin hos = new HospitalLogin();
-                 jSplitPane1.setRightComponent(hos);
+        RightPanel.add("HospitalLogin",hos);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
     }//GEN-LAST:event_HospitalActionPerformed
 
     /**

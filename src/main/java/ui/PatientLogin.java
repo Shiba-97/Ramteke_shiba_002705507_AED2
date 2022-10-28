@@ -9,6 +9,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.JPanel;
+import newpackage.PersonDirectory;
 
 /**
  *
@@ -19,10 +20,12 @@ public class PatientLogin extends javax.swing.JPanel {
     /**
      * Creates new form PatientLogin
      */
+    PersonDirectory personDirectory;
     public JPanel RightPanel;
-    public PatientLogin(JPanel RightPanel) {
+    public PatientLogin(JPanel RightPanel, PersonDirectory personDirectory) {
         initComponents();
         this.RightPanel = RightPanel;
+        this.personDirectory= personDirectory;
     }
 
     /**
@@ -114,7 +117,7 @@ public class PatientLogin extends javax.swing.JPanel {
 
     private void AddNewBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewBtActionPerformed
         // TODO add your handling code here:
-        AddPerson addp = new AddPerson(RightPanel);
+        AddPerson addp = new AddPerson(RightPanel,personDirectory);
         RightPanel.add(addp);
         
         CardLayout layout = (CardLayout) RightPanel.getLayout();

@@ -10,11 +10,9 @@ package newpackage;
  */
 public class Community {
     private String communityName;
-    private PatientCatalog patientCatalog;
+   // private PatientCatalog patientCatalog;
 
-    public Community() {
-        patientCatalog = new PatientCatalog();
-    }
+    
 
     public String getCommunityName() {
         return communityName;
@@ -24,13 +22,7 @@ public class Community {
         this.communityName = communityName;
     }
 
-    public PatientCatalog getPatientCatalog() {
-        return patientCatalog;
-    }
 
-    public void setPatientCatalog(PatientCatalog patientCatalog) {
-        this.patientCatalog = patientCatalog;
-    }
 
     @Override
     public String toString() {
