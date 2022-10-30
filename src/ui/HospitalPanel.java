@@ -66,14 +66,16 @@ public class HospitalPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtHospname = new javax.swing.JTextField();
-        cmbComm = new javax.swing.JComboBox<>();
+        cmbComm = new javax.swing.JComboBox<String>();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        cmbRate = new javax.swing.JComboBox<>();
+        cmbRate = new javax.swing.JComboBox<String>();
         btnView = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(102, 204, 255));
 
         tabHosp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,7 +108,7 @@ public class HospitalPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Community");
 
-        cmbComm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbComm.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " " }));
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +128,7 @@ public class HospitalPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Ratings");
 
-        cmbRate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1", "2", "3", "4", "5" }));
+        cmbRate.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "1", "2", "3", "4", "5" }));
 
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {

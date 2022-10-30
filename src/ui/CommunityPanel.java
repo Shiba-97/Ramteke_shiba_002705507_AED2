@@ -63,11 +63,13 @@ public class CommunityPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtStreet = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cmbCity = new javax.swing.JComboBox<>();
+        cmbCity = new javax.swing.JComboBox<String>();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(102, 204, 255));
 
         tabComm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,7 +98,7 @@ public class CommunityPanel extends javax.swing.JPanel {
 
         jLabel3.setText("City");
 
-        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Boston", "New York", "New Jersey" }));
+        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Boston", "New York", "New Jersey" }));
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +130,7 @@ public class CommunityPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()

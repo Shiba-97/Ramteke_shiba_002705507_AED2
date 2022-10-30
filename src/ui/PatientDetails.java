@@ -80,9 +80,11 @@ public class PatientDetails extends javax.swing.JPanel {
         txtuser = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        cmbGender = new javax.swing.JComboBox<>();
+        cmbGender = new javax.swing.JComboBox<String>();
         btnEncounterHistory = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(102, 204, 255));
 
         tabPatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,6 +127,8 @@ public class PatientDetails extends javax.swing.JPanel {
                 btnViewActionPerformed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         jLabel1.setText("Name");
 
@@ -171,7 +175,7 @@ public class PatientDetails extends javax.swing.JPanel {
             }
         });
 
-        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female", "Others" }));
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Male", "Female", "Others" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,7 +218,7 @@ public class PatientDetails extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtcellph)
-                                    .addComponent(txtuser, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))))))
+                                    .addComponent(txtuser))))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,7 +258,7 @@ public class PatientDetails extends javax.swing.JPanel {
                     .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -305,7 +309,7 @@ public class PatientDetails extends javax.swing.JPanel {
                             .addComponent(btnEncounterHistory))
                         .addGap(53, 53, 53)
                         .addComponent(btnBack)
-                        .addGap(0, 78, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

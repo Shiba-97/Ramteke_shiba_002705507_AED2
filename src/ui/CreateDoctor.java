@@ -68,11 +68,13 @@ public class CreateDoctor extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cmbDegree = new javax.swing.JComboBox<>();
+        cmbDegree = new javax.swing.JComboBox<String>();
         txtExp = new javax.swing.JTextField();
         rbtnYes = new javax.swing.JRadioButton();
         rbtnNo = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         jLabel1.setText("Name :");
 
@@ -97,7 +99,7 @@ public class CreateDoctor extends javax.swing.JPanel {
 
         jLabel8.setText("Availability :");
 
-        cmbDegree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "MBBS", "BMBS", "MD", "DO" }));
+        cmbDegree.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "MBBS", "BMBS", "MD", "DO" }));
 
         rbtnYes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -56,8 +56,8 @@ public class CreatePerson extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmbCity = new javax.swing.JComboBox<>();
-        cmbcomm = new javax.swing.JComboBox<>();
+        cmbCity = new javax.swing.JComboBox<String>();
+        cmbcomm = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -68,15 +68,17 @@ public class CreatePerson extends javax.swing.JPanel {
         txtname = new javax.swing.JTextField();
         txtcellph = new javax.swing.JTextField();
         btnsave = new javax.swing.JButton();
-        cmbgender = new javax.swing.JComboBox<>();
+        cmbgender = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         txtstreet = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtage = new javax.swing.JTextField();
 
-        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Boston", "New York", "" }));
+        setBackground(new java.awt.Color(102, 204, 255));
 
-        cmbcomm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Roxburry", "Dorchester", "Fenway" }));
+        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "", "Boston", "New York", "" }));
+
+        cmbcomm.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Roxburry", "Dorchester", "Fenway" }));
         cmbcomm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbcommActionPerformed(evt);
@@ -125,7 +127,7 @@ public class CreatePerson extends javax.swing.JPanel {
             }
         });
 
-        cmbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female", "Other", " " }));
+        cmbgender.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Male", "Female", "Other", " " }));
 
         jLabel8.setText("Street Name");
 
