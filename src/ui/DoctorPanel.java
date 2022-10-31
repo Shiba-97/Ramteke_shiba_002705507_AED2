@@ -18,7 +18,7 @@ import model.SystemClass;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class DoctorPanel extends javax.swing.JPanel {
 
@@ -35,14 +35,13 @@ public class DoctorPanel extends javax.swing.JPanel {
     public DoctorPanel(JPanel workArea,PersonDirectory person, PatientDirectory ptDirectory, DoctorDirectory docDirectory, 
                         HospitalDirectory hospDirectory, City commDirectory, SystemClass sys) {
         initComponents();
-        this.docDirectory= docDirectory;
-         this.workArea= workArea;
-    this.ptDirectory= ptDirectory;
-    this.person=person;
-    this.hospDirectory= hospDirectory;
-    this.commDirectory=commDirectory;
-    this.sys=sys;
-        
+        this.workArea = workArea;
+        this.ptDirectory = ptDirectory;
+        this.person = person;
+        this.docDirectory = docDirectory;
+        this.hospDirectory = hospDirectory;
+        this.commDirectory = commDirectory;
+        this.sys = sys;
     }
 
     /**
@@ -62,10 +61,13 @@ public class DoctorPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 204, 255));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Username");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,13 +82,15 @@ public class DoctorPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLogin)
                     .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                    .addComponent(txtPass))
+                    .addComponent(txtPass)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btnLogin)))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,9 +104,9 @@ public class DoctorPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(btnLogin)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,11 +115,11 @@ public class DoctorPanel extends javax.swing.JPanel {
         for(Doctor d : docDirectory.getDocDirectory()){
                 if(d.getUserd().equals(txtUser.getText()) && d.getPassd().equals(txtPass.getText())){
                     JOptionPane.showMessageDialog(null, "Logged in Successfully");
-                    
-//                    PatientEncounters patenc = new PatientEncounters();
-//                    workArea.add("PatientEncounters", patenc);
-//                    CardLayout layout = (CardLayout) workArea.getLayout();
-//                    layout.next(workArea);
+                    int j = docDirectory.getDocDirectory().indexOf(d);
+                    DoctorEncounters docenc = new DoctorEncounters(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys,j);
+                    workArea.add("DoctorEncounters", docenc);
+                    CardLayout layout = (CardLayout) workArea.getLayout();
+                    layout.next(workArea);
                     
                 } 
         }

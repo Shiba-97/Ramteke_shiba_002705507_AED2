@@ -14,7 +14,7 @@ import model.SystemClass;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class MainJFrame extends javax.swing.JFrame {
 
@@ -57,8 +57,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        controlArea.setBackground(new java.awt.Color(0, 153, 255));
+        controlArea.setBackground(new java.awt.Color(51, 153, 255));
 
+        Systembtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Systembtn.setText("System");
         Systembtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +67,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        Patientbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Patientbtn.setText("Patient");
         Patientbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +75,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        Doctorbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Doctorbtn.setText("Doctor");
         Doctorbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +83,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnHospLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHospLogin.setText("Hospital");
         btnHospLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +91,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCommLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCommLogin.setText("Community");
         btnCommLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +106,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(controlAreaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCommLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnCommLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                     .addComponent(btnHospLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Systembtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Doctorbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,7 +126,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(Doctorbtn)
                 .addGap(18, 18, 18)
                 .addComponent(Patientbtn)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(controlArea);
@@ -134,11 +139,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
         );
 
         pack();

@@ -17,7 +17,7 @@ import model.SystemClass;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class PatientPanel extends javax.swing.JPanel {
 
@@ -38,6 +38,11 @@ public class PatientPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.person = person;
         this.ptDirectory = ptDirectory;
+        this.docDirectory = docDirectory;
+        this.hospDirectory = hospDirectory;
+        this.commDirectory = commDirectory;
+        this.sys = sys;
+        
     }
 
     /**
@@ -53,26 +58,21 @@ public class PatientPanel extends javax.swing.JPanel {
         txtUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnlogin = new javax.swing.JButton();
-        btnaddnew = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(102, 204, 255));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Username");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnlogin.setText("Login");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
-            }
-        });
-
-        btnaddnew.setText("New User ");
-        btnaddnew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnaddnewActionPerformed(evt);
             }
         });
 
@@ -83,16 +83,15 @@ public class PatientPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                    .addComponent(txtPass)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnlogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnaddnew, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtUser)
-                    .addComponent(txtPass))
+                        .addGap(65, 65, 65)
+                        .addComponent(btnlogin)))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,31 +105,19 @@ public class PatientPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnlogin)
-                    .addComponent(btnaddnew))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(btnlogin)
+                .addGap(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
-        // TODO add your handling code here:
-        CreatePerson createP = new CreatePerson(workArea,ptDirectory ,person, docDirectory,hospDirectory, commDirectory, sys);
-        workArea.add("CreatePerson", createP);
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.next(workArea);
-        
-        
-    }//GEN-LAST:event_btnaddnewActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
         for(Patient p : ptDirectory.getPtDirectory()){
                 if(p.getUsername().equals(txtUser.getText()) && p.getPass().equals(txtPass.getText())){
                     JOptionPane.showMessageDialog(null, "Logged in Successfully");
-                    
-                    PatientEncounters patenc = new PatientEncounters();
+                    int j = ptDirectory.getPtDirectory().indexOf(p);
+                    PatientEncounters patenc = new PatientEncounters(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys,j);
                     workArea.add("PatientEncounters", patenc);
                     CardLayout layout = (CardLayout) workArea.getLayout();
                     layout.next(workArea);
@@ -141,7 +128,6 @@ public class PatientPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnaddnew;
     private javax.swing.JButton btnlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

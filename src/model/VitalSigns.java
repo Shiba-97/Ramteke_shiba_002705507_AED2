@@ -4,17 +4,21 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class VitalSigns {
+    
     private int bloodpressureupper;
     private int bloodpressurelower;
     private int heartrate; 
     private double temperature;
-    private String date; 
-    private String time;
+    private Date date;
+
+    
 
     public int getBloodpressureupper() {
         return bloodpressureupper;
@@ -48,19 +52,12 @@ public class VitalSigns {
         this.temperature = temperature;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

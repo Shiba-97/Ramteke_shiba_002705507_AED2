@@ -13,13 +13,14 @@ import model.City;
 import model.Community;
 import model.DoctorDirectory;
 import model.HospitalDirectory;
+import model.Patient;
 import model.PatientDirectory;
 import model.PersonDirectory;
 import model.SystemClass;
 
 /**
  *
- * @author shiba
+ * @author Shiba
  */
 public class CommunityPanel extends javax.swing.JPanel {
 
@@ -43,6 +44,7 @@ public class CommunityPanel extends javax.swing.JPanel {
         this.docDirectory = docDirectory;
         this.hospDirectory = hospDirectory;
         this.commDirectory = commDirectory;
+        this.sys=sys;
         
         populateTabComm();
     }
@@ -63,14 +65,16 @@ public class CommunityPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtStreet = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cmbCity = new javax.swing.JComboBox<String>();
+        cmbCity = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 204, 255));
 
+        tabComm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tabComm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -92,14 +96,18 @@ public class CommunityPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabComm);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Community :");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("House :");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("City");
 
-        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Boston", "New York", "New Jersey" }));
+        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Boston", "New York", "New Jersey" }));
 
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +115,7 @@ public class CommunityPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,12 +123,27 @@ public class CommunityPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        btnView.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
             }
         });
 
@@ -130,34 +154,34 @@ public class CommunityPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtComm, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtStreet)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addComponent(jScrollPane1))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +200,14 @@ public class CommunityPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
-                    .addComponent(btnUpdate)
+                    .addComponent(btnUpdate))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnView)
                     .addComponent(btnDelete))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBack)
-                .addContainerGap())
+                .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,6 +218,7 @@ public class CommunityPanel extends javax.swing.JPanel {
         String city = cmbCity.getSelectedItem().toString();
         if(comm.isEmpty() || str.isEmpty() || city.isEmpty()){
             JOptionPane.showMessageDialog(null, "Fill in Details");
+            return;
         }else {
             Community com = commDirectory.addNewComm();
 
@@ -198,6 +226,11 @@ public class CommunityPanel extends javax.swing.JPanel {
                 com.setComm(comm);
                 com.setCity(city);
                 populateTabComm();
+                
+                txtComm.setText("");
+                txtStreet.setText("");
+                cmbCity.setSelectedIndex(0);
+                
         }
             
         
@@ -205,30 +238,101 @@ public class CommunityPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tabComm.getSelectedRow();
         
+        String community = txtComm.getText();
+        String str = txtStreet.getText();
+        String city = cmbCity.getSelectedItem().toString();
+        
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Select a row first");
+            return;
+        }
+        if(selectedRowIndex>=0){
+            if(community.isEmpty() || str.isEmpty() || city.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Fill in Details");
+        }else {
+            DefaultTableModel modelc = (DefaultTableModel) tabComm.getModel();
+            Community conity = (Community) modelc.getValueAt(selectedRowIndex, 0);
+
+                conity.setStreet(str);
+                conity.setComm(community);
+                conity.setCity(city);
+                populateTabComm();
+                
+                txtComm.setText("");
+                txtStreet.setText("");
+                cmbCity.setSelectedIndex(0);
+        }
+        
+        
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        System2Panel sys22 = new System2Panel(workArea, person, ptDirectory, docDirectory, hospDirectory, commDirectory, sys);
-        workArea.add("System2Panel",sys22 );
+        System2Panel sys2 = new System2Panel(workArea, person, ptDirectory, docDirectory, hospDirectory, commDirectory, sys);
+        workArea.add("System2Panel", sys2);
         CardLayout lay = (CardLayout) workArea.getLayout();
         lay.next(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
-    
-    public void populateTabComm() {
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tabComm.getSelectedRow();
         
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Select a row first");
+            return;
+        }
+        if(selectedRowIndex>=0){
+            DefaultTableModel modelc = (DefaultTableModel) tabComm.getModel();
+            Community conity = (Community) modelc.getValueAt(selectedRowIndex, 0);
+            
+            txtComm.setText(conity.comm);
+            txtStreet.setText(conity.street);
+            cmbCity.setSelectedItem(conity.city);
+        
+        }
+        
+        
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tabComm.getSelectedRow();
+        if(selectedRowIndex<0){
+            JOptionPane.showMessageDialog(null, "Select a row first");
+            return;
+        }
+        if(selectedRowIndex>=0){
+            DefaultTableModel modelc = (DefaultTableModel) tabComm.getModel();
+            Community comm = (Community) modelc.getValueAt(selectedRowIndex, 0);
+            commDirectory.deleteCom(comm);
+            txtComm.setText("");
+            txtStreet.setText("");
+            cmbCity.setSelectedIndex(0);
+            populateTabComm();
+        }
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+    
+    private void populateTabComm() {
         
         DefaultTableModel model = (DefaultTableModel) tabComm.getModel();
         
         model.setRowCount(0);
         for(Community co : commDirectory.getCommDirectory()){
             Object[] row = new Object[3];
-            row[0] = co.comm;
+            row[0] = co;
             row[1] = co.street;
             row[2] = co.city;
             
             model.addRow(row);
+        }
+        DefaultListModel list = new DefaultListModel();
+        for(Community co : commDirectory.getCommDirectory()){
+            list.addElement(co);
         }
         
     }
@@ -240,6 +344,7 @@ public class CommunityPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnView;
     private javax.swing.JComboBox<String> cmbCity;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

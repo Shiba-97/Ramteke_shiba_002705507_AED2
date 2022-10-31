@@ -4,9 +4,12 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class Doctor {
     Person person;
@@ -15,6 +18,29 @@ public class Doctor {
     public String degree;
     public int experience;
     public boolean avail;
+    public Request requests;
+    ArrayList<Patient> docPatients;
+    
+    public void Patient(){
+        this.docPatients = new ArrayList<Patient>();
+    }
+    public ArrayList<Patient> getDocPatients() {
+        return docPatients;
+    }
+
+    public void setDocPatients(ArrayList<Patient> docPatients) {
+        this.docPatients = docPatients;
+    }
+    
+    
+    public Request getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Request requests) {
+        this.requests = requests;
+    }
+
     
     public Doctor(Person person, String userd, String passd) {
         this.person = person;

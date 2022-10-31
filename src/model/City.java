@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class City {
     public ArrayList<Community> commDirectory;
@@ -24,6 +24,7 @@ public class City {
         commDirectory.add(com);
         return com;
     }
+    
     
     public void deleteCom(Community comm){
         commDirectory.remove(comm);

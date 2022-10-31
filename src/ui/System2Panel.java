@@ -23,7 +23,7 @@ import model.SystemClass;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class System2Panel extends javax.swing.JPanel {
 
@@ -70,28 +70,33 @@ public class System2Panel extends javax.swing.JPanel {
         btnComm = new javax.swing.JButton();
         btnHosp = new javax.swing.JButton();
         btnDoc = new javax.swing.JButton();
-        cmbRole = new javax.swing.JComboBox<String>();
+        cmbRole = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        lblCity = new javax.swing.JLabel();
-        cmbcomm = new javax.swing.JComboBox<String>();
+        cmbcomm = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtaptno = new javax.swing.JTextField();
         txtname = new javax.swing.JTextField();
-        btnsave = new javax.swing.JButton();
+        txtage = new javax.swing.JTextField();
         txtcellph = new javax.swing.JTextField();
-        txtstreet = new javax.swing.JTextField();
-        cmbgender = new javax.swing.JComboBox<String>();
+        cmbgender = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtage = new javax.swing.JTextField();
+        calculateAge = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblStr = new javax.swing.JLabel();
+        cmbDate = new com.toedter.calendar.JDateChooser();
+        btnsave = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 204, 255));
 
+        btnPatient.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPatient.setText("Manage Patients");
         btnPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +104,7 @@ public class System2Panel extends javax.swing.JPanel {
             }
         });
 
+        btnComm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnComm.setText("Manage Community");
         btnComm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +112,7 @@ public class System2Panel extends javax.swing.JPanel {
             }
         });
 
+        btnHosp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHosp.setText("Manage Hospital");
         btnHosp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +120,7 @@ public class System2Panel extends javax.swing.JPanel {
             }
         });
 
+        btnDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDoc.setText("Manage Doctors");
         btnDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,26 +128,36 @@ public class System2Panel extends javax.swing.JPanel {
             }
         });
 
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Hospital Admin\t", "Community Admin", "Doctor", "Patient" }));
+        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Hospital Admin\t", "Community Admin", "Doctor", "Patient" }));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Role");
 
-        jLabel5.setText("Gender");
-        jPanel2.add(jLabel5);
-        jPanel2.add(lblCity);
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
 
-        cmbcomm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbcommActionPerformed(evt);
+        cmbcomm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cmbcomm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbcommMouseClicked(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Select Community");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Name");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setText("Gender");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Date of Birth");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("House No.");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Cell Phone");
 
         txtaptno.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +177,15 @@ public class System2Panel extends javax.swing.JPanel {
             }
         });
 
-        btnsave.setText("Save");
-        btnsave.addActionListener(new java.awt.event.ActionListener() {
+        txtage.setEditable(false);
+        txtage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsaveActionPerformed(evt);
+                txtageActionPerformed(evt);
+            }
+        });
+        txtage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtageKeyPressed(evt);
             }
         });
 
@@ -172,72 +195,153 @@ public class System2Panel extends javax.swing.JPanel {
             }
         });
 
-        cmbgender.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "Male", "Female", "Other", " " }));
+        cmbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Male", "Female", "Other" }));
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Street Name");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Age");
+
+        calculateAge.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        calculateAge.setText("Calculate age");
+        calculateAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateAgeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("City");
+
+        cmbDate.setDateFormatString("dd-mm-y");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(txtcellph, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(cmbgender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cmbDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(34, 34, 34)
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(calculateAge))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(56, 56, 56)
+                            .addComponent(txtaptno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbcomm, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblStr, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbcomm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblStr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblCity, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtaptno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(calculateAge)
+                        .addComponent(jLabel10))
+                    .addComponent(cmbDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cmbgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtcellph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        btnsave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnsave.setText("Save");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(btnsave))
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPatient)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnComm, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnDoc, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(btnHosp)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtaptno, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtstreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtcellph, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(50, 50, 50))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbcomm, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(58, 58, 58))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbgender, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(201, 201, 201)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnComm)
-                            .addComponent(btnPatient)
-                            .addComponent(btnDoc)
-                            .addComponent(btnHosp))))
-                .addContainerGap(603, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnComm, btnDoc, btnHosp, btnPatient});
@@ -245,57 +349,26 @@ public class System2Panel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(cmbcomm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnComm)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnHosp)
-                            .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(txtaptno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(txtstreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(119, 119, 119)
-                        .addComponent(btnsave)
-                        .addGap(19, 19, 19))
+                        .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(btnDoc)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtcellph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(btnPatient))))))
+                        .addComponent(btnComm)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnHosp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDoc)
+                        .addGap(13, 13, 13)
+                        .addComponent(btnPatient)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnsave)
+                        .addGap(26, 26, 26))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -314,10 +387,6 @@ public class System2Panel extends javax.swing.JPanel {
             CardLayout lay = (CardLayout) workArea.getLayout();
             lay.next(workArea);
     }//GEN-LAST:event_btnPatientActionPerformed
-
-    private void cmbcommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcommActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbcommActionPerformed
 
     private void txtaptnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaptnoActionPerformed
         // TODO add your handling code here:
@@ -339,6 +408,22 @@ public class System2Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
 
+    private void txtageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtageActionPerformed
+
+    private void txtageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtageKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isDigit(c) || c == 8){
+            txtage.setEditable(true);
+
+        } else {
+            txtage.setEditable(false);
+
+        }
+    }//GEN-LAST:event_txtageKeyPressed
+
     private void txtcellphKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcellphKeyPressed
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -353,204 +438,228 @@ public class System2Panel extends javax.swing.JPanel {
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
-        if(cmbRole.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Select a role!");
-        }else if(cmbRole.getSelectedIndex() == 1){
-//HospitalAdmin
-            String name = txtname.getText();
-            String gender = cmbgender.getSelectedItem().toString();
-            String cellph = txtcellph.getText();
-            String street = txtstreet.getText();
-//            String city = lblCity.getText();
-            String comm = cmbcomm.getSelectedItem().toString();
-            String agechk = txtage.getText();
-            String aptnochk = txtaptno.getText();
-            
-            if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() ||  comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Fill in all the details");
-            } else if(cellph.length() != 10) {
-                JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
-
-            }else {
-
-                int age = Integer.parseInt(txtage.getText());
-                int aptno = Integer.parseInt(txtaptno.getText());
-                Person pc = person.addNewPerson();
-
-                pc.setName(name);
-                pc.setAge(age);
-                pc.setCellph(cellph);
-                pc.setGender(gender);
-                pc.setAptno(aptno);
-                pc.setStreet(street);
-//                pc.setCity(city);
-                pc.setComm(comm);
-                pc.setRole(cmbRole.getSelectedItem().toString());
-                System.out.println(cmbRole.getSelectedItem().toString());
-                int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Doctor ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(x == JOptionPane.YES_OPTION){
-                    CreateAdmin admPan = new CreateAdmin(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
-                    workArea.add("CreateAdmin", admPan );
-                    CardLayout lay = (CardLayout) workArea.getLayout();
-                    lay.next(workArea);
-
-                }else if(x == JOptionPane.NO_OPTION){
+        switch (cmbRole.getSelectedIndex()) {
+            case 0:
+                JOptionPane.showMessageDialog(null, "Select a role!");
+                break;
+            case 1:
+                {
+                    //HospitalAdmin
+                    String name = txtname.getText();
+                    String gender = cmbgender.getSelectedItem().toString();
+                    String cellph = txtcellph.getText();
+                    String street = lblStr.getText();
+                    String city = lblCity.getText();
+                    String comm = cmbcomm.getSelectedItem().toString();
+                    String agechk = txtage.getText();
+                    String aptnochk = txtaptno.getText();
+                    if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() ||  comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Fill in all the details");
+                    } else if(cellph.length() != 10) {
+                        JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
+                        
+                    }else {
+                        
+                        int age = Integer.parseInt(txtage.getText());
+                        int aptno = Integer.parseInt(txtaptno.getText());
+                        Person pc = person.addNewPerson();
+                        
+                        pc.setName(name);
+                        pc.setAge(age);
+                        pc.setCellph(cellph);
+                        pc.setGender(gender);
+                        pc.setAptno(aptno);
+                        pc.setStreet(street);
+                        pc.setCity(city);
+                        pc.setComm(comm);
+                        pc.setRole(cmbRole.getSelectedItem().toString());
+                        System.out.println(cmbRole.getSelectedItem().toString());
+                        int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Admin ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(x == JOptionPane.YES_OPTION){
+                            CreateAdmin admPan = new CreateAdmin(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
+                            workArea.add("CreateAdmin", admPan );
+                            CardLayout lay = (CardLayout) workArea.getLayout();
+                            lay.next(workArea);
+                            
+                        }else if(x == JOptionPane.NO_OPTION){
 //                    PatientPanel patty = new PatientPanel(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
 //                    workArea.add("Patient", patty );
 //                    CardLayout lay = (CardLayout) workArea.getLayout();
 //                    lay.previous(workArea);
+                        }
+                        
+                    }       break;
                 }
-
-            }
-            
-        }else if(cmbRole.getSelectedIndex() == 2){
-//CommunityAdmin
-            String name = txtname.getText();
-            String gender = cmbgender.getSelectedItem().toString();
-            String cellph = txtcellph.getText();
-            String street = txtstreet.getText();
-//            String city = lblCity.getText();
-            String comm = cmbcomm.getSelectedItem().toString();
-            String agechk = txtage.getText();
-            String aptnochk = txtaptno.getText();
-            
-            if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() ||  comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Fill in all the details");
-            } else if(cellph.length() != 10) {
-                JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
-
-            }else {
-
-                int age = Integer.parseInt(txtage.getText());
-                int aptno = Integer.parseInt(txtaptno.getText());
-                Person pc = person.addNewPerson();
-
-                pc.setName(name);
-                pc.setAge(age);
-                pc.setCellph(cellph);
-                pc.setGender(gender);
-                pc.setAptno(aptno);
-                pc.setStreet(street);
-//                pc.setCity(city);
-                pc.setComm(comm);
-                pc.setRole(cmbRole.getSelectedItem().toString());
-
-                int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Doctor ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(x == JOptionPane.YES_OPTION){
-                    CreateAdmin admPan = new CreateAdmin(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
-                    workArea.add("CreateAdmin", admPan );
-                    CardLayout lay = (CardLayout) workArea.getLayout();
-                    lay.next(workArea);
-
-                }else if(x == JOptionPane.NO_OPTION){
+            case 2:
+                {
+                    //CommunityAdmin
+                    String name = txtname.getText();
+                    String gender = cmbgender.getSelectedItem().toString();
+                    String cellph = txtcellph.getText();
+                    String street = lblStr.getText();
+                    String city = lblCity.getText();
+                    String comm = cmbcomm.getSelectedItem().toString();
+                    String agechk = txtage.getText();
+                    String aptnochk = txtaptno.getText();
+                    if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() ||  comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Fill in all the details");
+                    } else if(cellph.length() != 10) {
+                        JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
+                        
+                    }else {
+                        
+                        int age = Integer.parseInt(txtage.getText());
+                        int aptno = Integer.parseInt(txtaptno.getText());
+                        Person pc = person.addNewPerson();
+                        
+                        pc.setName(name);
+                        pc.setAge(age);
+                        pc.setCellph(cellph);
+                        pc.setGender(gender);
+                        pc.setAptno(aptno);
+                        pc.setStreet(street);
+                        pc.setCity(city);
+                        pc.setComm(comm);
+                        pc.setRole(cmbRole.getSelectedItem().toString());
+                        
+                        int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Admin ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(x == JOptionPane.YES_OPTION){
+                            CreateAdmin admPan = new CreateAdmin(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
+                            workArea.add("CreateAdmin", admPan );
+                            CardLayout lay = (CardLayout) workArea.getLayout();
+                            lay.next(workArea);
+                            
+                        }else if(x == JOptionPane.NO_OPTION){
 //                    PatientPanel patty = new PatientPanel(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
 //                    workArea.add("Patient", patty );
 //                    CardLayout lay = (CardLayout) workArea.getLayout();
 //                    lay.previous(workArea);
+                        }
+                        
+                    }       break;
                 }
-
-            }
-        }else if(cmbRole.getSelectedIndex() == 3){
-            String name = txtname.getText();
-            String gender = cmbgender.getSelectedItem().toString();
-            String cellph = txtcellph.getText();
-            String street = txtstreet.getText();
-//            String city = lblCity.getText();
-            String comm = cmbcomm.getSelectedItem().toString();
-            String agechk = txtage.getText();
-            String aptnochk = txtaptno.getText();
-            
-            if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() ||  comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Fill in all the details");
-            } else if(cellph.length() != 10) {
-                JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
-
-            }else {
-
-                int age = Integer.parseInt(txtage.getText());
-                int aptno = Integer.parseInt(txtaptno.getText());
-                Person pc = person.addNewPerson();
-
-                pc.setName(name);
-                pc.setAge(age);
-                pc.setCellph(cellph);
-                pc.setGender(gender);
-                pc.setAptno(aptno);
-                pc.setStreet(street);
-//                pc.setCity(city);
-                pc.setComm(comm);
-                pc.setRole(cmbRole.getSelectedItem().toString());
-
-                int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Doctor ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(x == JOptionPane.YES_OPTION){
-                    CreateDoctor docPan = new CreateDoctor(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
-                    workArea.add("CreateDoctor", docPan );
-                    CardLayout lay = (CardLayout) workArea.getLayout();
-                    lay.next(workArea);
-
-                }else if(x == JOptionPane.NO_OPTION){
-                    PatientPanel patty = new PatientPanel(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
-                    workArea.add("Patient", patty );
-                    CardLayout lay = (CardLayout) workArea.getLayout();
-                    lay.previous(workArea);
+            case 3:
+                {
+                    String name = txtname.getText();
+                    String gender = cmbgender.getSelectedItem().toString();
+                    String cellph = txtcellph.getText();
+                    String street = lblStr.getText();
+                    String city = lblCity.getText();
+                    String comm = cmbcomm.getSelectedItem().toString();
+                    String agechk = txtage.getText();
+                    String aptnochk = txtaptno.getText();
+                    if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() ||  comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Fill in all the details");
+                    } else if(cellph.length() != 10) {
+                        JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
+                        
+                    }else {
+                        
+                        int age = Integer.parseInt(txtage.getText());
+                        int aptno = Integer.parseInt(txtaptno.getText());
+                        Person pc = person.addNewPerson();
+                        
+                        pc.setName(name);
+                        pc.setAge(age);
+                        pc.setCellph(cellph);
+                        pc.setGender(gender);
+                        pc.setAptno(aptno);
+                        pc.setStreet(street);
+                        pc.setCity(city);
+                        pc.setComm(comm);
+                        pc.setRole(cmbRole.getSelectedItem().toString());
+                        
+                        int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Doctor ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(x == JOptionPane.YES_OPTION){
+                            CreateDoctor docPan = new CreateDoctor(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
+                            workArea.add("CreateDoctor", docPan );
+                            CardLayout lay = (CardLayout) workArea.getLayout();
+                            lay.next(workArea);
+                            
+                        }else if(x == JOptionPane.NO_OPTION){
+//                            PatientPanel patty = new PatientPanel(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
+//                            workArea.add("Patient", patty );
+//                            CardLayout lay = (CardLayout) workArea.getLayout();
+//                            lay.previous(workArea);
+                        }
+                        
+                    }       break;
                 }
-
-            }
-        
-        
-        
-        
-        }else if(cmbRole.getSelectedIndex()== 4) {
-        
-            String name = txtname.getText();
-            String gender = cmbgender.getSelectedItem().toString();
-            String cellph = txtcellph.getText();
-            String street = txtstreet.getText();
-//            String city = lblCity.getText();
-            String comm = cmbcomm.getSelectedItem().toString();
-            String agechk = txtage.getText();
-            String aptnochk = txtaptno.getText();
-            
-
-            if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty() 
-                || comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Fill in all the details");
-            } else if(cellph.length() != 10) {
-                JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
-
-            } else {
-
-                int age = Integer.parseInt(txtage.getText());
-                int aptno = Integer.parseInt(txtaptno.getText());
-                Person pc = person.addNewPerson();
-
-                pc.setName(name);
-                pc.setAge(age);
-                pc.setCellph(cellph);
-                pc.setGender(gender);
-                pc.setAptno(aptno);
-                pc.setStreet(street);
-//                pc.setCity(city);
-                pc.setComm(comm);
-                pc.setRole(cmbRole.getSelectedItem().toString());
-
-                int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Patient ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if(x == JOptionPane.YES_OPTION){
-                    CreatePatient panpatient = new CreatePatient(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
-                    workArea.add("CreatePatient", panpatient );
-                    CardLayout lay = (CardLayout) workArea.getLayout();
-                    lay.next(workArea);
-
-                }else if(x == JOptionPane.NO_OPTION){
-                    PatientPanel patty = new PatientPanel(workArea,person, ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
-                    workArea.add("Patient", patty );
-                    CardLayout lay = (CardLayout) workArea.getLayout();
-                    lay.previous(workArea);
+            case 4:
+                {
+                    String name = txtname.getText();
+                    String gender = cmbgender.getSelectedItem().toString();
+                    String cellph = txtcellph.getText();
+                    String street = lblStr.getText();
+                    String city = lblCity.getText();
+                    String comm = cmbcomm.getSelectedItem().toString();
+                    String agechk = txtage.getText();
+                    String aptnochk = txtaptno.getText();
+                    if (name.isEmpty() || gender.isEmpty() || agechk.isEmpty() || cellph.isEmpty()
+                            || comm.isEmpty() || aptnochk.isEmpty() || street.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Fill in all the details");
+                    } else if(cellph.length() != 10) {
+                        JOptionPane.showMessageDialog(null, "Incorrect cellphone number");
+                        
+                    } else {
+                        
+                        int age = Integer.parseInt(txtage.getText());
+                        int aptno = Integer.parseInt(txtaptno.getText());
+                        Person pc = person.addNewPerson();
+                        
+                        pc.setName(name);
+                        pc.setAge(age);
+                        pc.setCellph(cellph);
+                        pc.setGender(gender);
+                        pc.setAptno(aptno);
+                        pc.setStreet(street);
+                        pc.setCity(city);
+                        pc.setComm(comm);
+                        pc.setRole(cmbRole.getSelectedItem().toString());
+                        
+                        int x = JOptionPane.showConfirmDialog(null, "Do you want to proceed to register as Patient ?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(x == JOptionPane.YES_OPTION){
+                            CreatePatient panpatient = new CreatePatient(workArea,person,ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
+                            workArea.add("CreatePatient", panpatient );
+                            CardLayout lay = (CardLayout) workArea.getLayout();
+                            lay.next(workArea);
+                            
+                        }else if(x == JOptionPane.NO_OPTION){
+//                            PatientPanel patty = new PatientPanel(workArea,person, ptDirectory , docDirectory,hospDirectory, commDirectory, sys);
+//                            workArea.add("Patient", patty );
+//                            CardLayout lay = (CardLayout) workArea.getLayout();
+//                            lay.previous(workArea);
+                        }
+                        
+                    }       break;
                 }
-
-            }
+            default:
+                break;
         }
     }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void calculateAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateAgeActionPerformed
+        // TODO add your handling code here:
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-y");
+            String thedate = dateFormat.format(cmbDate.getDate());
+
+            String dob = ((JTextField)(cmbDate.getDateEditor().getUiComponent())).getText();
+            //        System.out.println("" +dob);
+            String dob2[] = dob.split("-");
+            int date = Integer.parseInt(dob2[0]);
+            int month = Integer.parseInt(dob2[1]);
+            int year = Integer.parseInt(dob2[2]);
+
+            LocalDate selectedDate = LocalDate.of(year, month, date);
+            LocalDate currentDate = LocalDate.now();
+            int resultyear = Period.between(selectedDate,currentDate).getYears();
+            txtage.setText(String.valueOf(resultyear));
+
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Invalid date");
+        }
+    }//GEN-LAST:event_calculateAgeActionPerformed
 
     private void btnCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommActionPerformed
         // TODO add your handling code here:
@@ -570,6 +679,18 @@ public class System2Panel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnDocActionPerformed
 
+    private void cmbcommMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbcommMouseClicked
+        // TODO add your handling code here:
+        String commchk = cmbcomm.getSelectedItem().toString();
+        for(Community c : commDirectory.getCommDirectory()){
+            if(String.valueOf(c).equals(commchk)){
+                lblCity.setText(c.city);
+                lblStr.setText(c.street);
+            } else {
+            }
+        }
+    }//GEN-LAST:event_cmbcommMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnComm;
@@ -577,23 +698,27 @@ public class System2Panel extends javax.swing.JPanel {
     private javax.swing.JButton btnHosp;
     private javax.swing.JButton btnPatient;
     private javax.swing.JButton btnsave;
+    private javax.swing.JButton calculateAge;
+    private com.toedter.calendar.JDateChooser cmbDate;
     private javax.swing.JComboBox<String> cmbRole;
     private javax.swing.JComboBox<String> cmbcomm;
     private javax.swing.JComboBox<String> cmbgender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblStr;
     private javax.swing.JTextField txtage;
     private javax.swing.JTextField txtaptno;
     private javax.swing.JTextField txtcellph;
     private javax.swing.JTextField txtname;
-    private javax.swing.JTextField txtstreet;
     // End of variables declaration//GEN-END:variables
 }

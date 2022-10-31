@@ -8,10 +8,22 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class SystemClass {
     public ArrayList<Admin> adminDirectory;
+    public ArrayList<Request> requestDirectory;
+
+    public void Request(){
+        this.requestDirectory = new ArrayList<Request>();
+    }
+    public ArrayList<Request> getRequestDirectory() {
+        return requestDirectory;
+    }
+
+    public void setRequestDirectory(ArrayList<Request> requestDirectory) {
+        this.requestDirectory = requestDirectory;
+    }
     
     public SystemClass(){
             this.adminDirectory = new ArrayList<Admin>();

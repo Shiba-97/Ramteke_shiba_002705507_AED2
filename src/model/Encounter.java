@@ -8,10 +8,11 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class Encounter {
     ArrayList<VitalSigns> vitalSignsDirectory;
+    
     
     
     public ArrayList<VitalSigns> getVitalSignsDirectory() {
@@ -21,5 +22,12 @@ public class Encounter {
     public void setVitalSignsDirectory(ArrayList<VitalSigns> vitalSignsDirectory) {
         this.vitalSignsDirectory = vitalSignsDirectory;
     }
+    
+    public VitalSigns createAndAddVitalSign() {
+        VitalSigns vitalSign = new VitalSigns();
+        vitalSignsDirectory.add(vitalSign);
+        return vitalSign;
+    }
+    
     
 }

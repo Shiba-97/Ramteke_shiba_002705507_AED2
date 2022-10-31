@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class House extends Community {
     public int aptno;

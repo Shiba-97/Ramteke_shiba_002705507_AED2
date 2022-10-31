@@ -5,10 +5,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class DoctorDirectory {
     public ArrayList<Doctor> docDirectory;
@@ -16,6 +17,7 @@ public class DoctorDirectory {
     
     public DoctorDirectory(){
             this.docDirectory = new ArrayList<Doctor>();
+            
         }
     
     public Doctor addNewDoctor(Person person,String username,String pass){
@@ -34,9 +36,6 @@ public class DoctorDirectory {
 
     public void setDocDirectory(ArrayList<Doctor> docDirectory) {
         this.docDirectory = docDirectory;
-    }
-     public void deleteDoctor(Doctor dr){
-        docDirectory.remove(dr);
     }
     
 }

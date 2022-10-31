@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class Hospital {
     Community community;
@@ -42,5 +42,9 @@ public class Hospital {
     public void setHname(String hname) {
         this.hname = hname;
     }
-    
+    @Override
+    public String toString(){
+        return hname;
+        
+    }
 }

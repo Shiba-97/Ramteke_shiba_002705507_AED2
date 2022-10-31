@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class Person extends House{
     public String name;

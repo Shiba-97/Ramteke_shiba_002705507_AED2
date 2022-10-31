@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author shiba
+ * @author Shiba
  */
 public class Admin {
     Person person;

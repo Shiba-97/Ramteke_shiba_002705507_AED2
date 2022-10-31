@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,7 +20,7 @@ import model.SystemClass;
 
 /**
  *
- * @author Shubham Idekar
+ * @author Shiba
  */
 public class HospitalPanel extends javax.swing.JPanel {
 
@@ -49,7 +50,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                 cmbComm.addItem(commArray.get(k).toString());
             }
         }
-        populateTabComm();
+        populateTabHosp();
     }
 
     /**
@@ -66,14 +67,14 @@ public class HospitalPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtHospname = new javax.swing.JTextField();
-        cmbComm = new javax.swing.JComboBox<String>();
+        cmbComm = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        cmbRate = new javax.swing.JComboBox<String>();
+        cmbRate = new javax.swing.JComboBox<>();
         btnView = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 204, 255));
 
@@ -104,12 +105,15 @@ public class HospitalPanel extends javax.swing.JPanel {
             tabHosp.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Hospital Name:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Community");
 
-        cmbComm.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " " }));
+        cmbComm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
 
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,8 +121,15 @@ public class HospitalPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,10 +137,12 @@ public class HospitalPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Ratings");
 
-        cmbRate.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { " ", "1", "2", "3", "4", "5" }));
+        cmbRate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1", "2", "3", "4", "5" }));
 
+        btnView.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,10 +150,11 @@ public class HospitalPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -170,7 +184,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                         .addComponent(cmbRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(btnAdd)
                                 .addGap(18, 18, 18)
@@ -203,7 +217,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                     .addComponent(btnView)
                     .addComponent(btnUpdate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnBack)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -214,13 +228,12 @@ public class HospitalPanel extends javax.swing.JPanel {
         String comm = cmbComm.getSelectedItem().toString();
         String ratechk = cmbRate.getSelectedItem().toString();
         
-        
-        
-        
-        if(hname.isEmpty() || comm.isEmpty() || ratechk.isEmpty()){
+        if(hname.isEmpty() || comm==(" ") || ratechk.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Fill Details");
+                return;
         }else{  
                 ArrayList<Community> commArray = commDirectory.commDirectory;
+//              Community selectedComm = commArray.get(cmbComm.getSelectedIndex());
                 Community selectedComm = commArray.get(cmbComm.getSelectedIndex()-1);
                 int ratings = Integer.parseInt(cmbRate.getSelectedItem().toString());  
                 Hospital hosp = hospDirectory.addNewHospital(selectedComm, hname, ratings);
@@ -229,7 +242,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                 hosp.setHname(hname);
                 hosp.setCommunity(selectedComm);
                 hosp.setRatings(ratings);
-                populateTabComm();
+                populateTabHosp();
                 JOptionPane.showMessageDialog(null, "Added!");
                 
                 txtHospname.setText(" ");
@@ -242,24 +255,30 @@ public class HospitalPanel extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tabHosp.getSelectedRow();
+        
+        if(selectedRowIndex<0 ){
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        if(selectedRowIndex>=0){
+        
         String hname = txtHospname.getText();
         String comm = cmbComm.getSelectedItem().toString();
-        
         String ratechk = cmbRate.getSelectedItem().toString();
        
         
         if(hname.isEmpty() || comm.isEmpty() || ratechk.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Fill Details");
         }else{
-                ArrayList<Community> commArray = commDirectory.commDirectory;
-                Community selectedComm = commArray.get(cmbComm.getSelectedIndex()-1);
-                int ratings = Integer.parseInt(cmbRate.getSelectedItem().toString());
-                Hospital hosp = hospDirectory.addNewHospital(selectedComm, hname, ratings);
                 
+                int ratings = Integer.parseInt(cmbRate.getSelectedItem().toString());
+                DefaultTableModel model = (DefaultTableModel) tabHosp.getModel();
+                Hospital hosp = (Hospital) model.getValueAt(selectedRowIndex, 0);                
                 hosp.setHname(hname);
                 hosp.getCommunity().comm = comm;
                 hosp.setRatings(ratings);
-                populateTabComm();
+                populateTabHosp();
                 JOptionPane.showMessageDialog(null, "Updated!");
                 
                 txtHospname.setText(" ");
@@ -267,12 +286,12 @@ public class HospitalPanel extends javax.swing.JPanel {
                 cmbRate.setSelectedIndex(0);
                 
         }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tabHosp.getSelectedRow();
-        
         
         if(selectedRowIndex<0 ){
             JOptionPane.showMessageDialog(null, "Please select a row!");
@@ -280,31 +299,56 @@ public class HospitalPanel extends javax.swing.JPanel {
         }
         if(selectedRowIndex>=0){
             
-           
             DefaultTableModel model = (DefaultTableModel) tabHosp.getModel();
             Hospital hosp = (Hospital) model.getValueAt(selectedRowIndex, 0);
             
            
             txtHospname.setText(hosp.hname);
-            cmbComm.setSelectedItem(hosp.getCommunity().getComm());
-            cmbRate.setSelectedItem(hosp.ratings);
+            cmbComm.setSelectedItem(hosp.getCommunity().comm);
+            cmbRate.setSelectedIndex(hosp.ratings);
             
        }
        
     }//GEN-LAST:event_btnViewActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+                System2Panel sys2pan = new System2Panel(workArea, person, ptDirectory, docDirectory, hospDirectory, commDirectory, sys);
+                workArea.add("System2Panel", sys2pan);
+                CardLayout lay = (CardLayout) workArea.getLayout();
+                lay.next(workArea);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tabHosp.getSelectedRow();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
-    public void populateTabComm() {
+        if(selectedRowIndex<0 ){
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        if(selectedRowIndex>=0){
+            
+            DefaultTableModel model = (DefaultTableModel) tabHosp.getModel();
+            Hospital hosp = (Hospital) model.getValueAt(selectedRowIndex, 0);
+            
+            hospDirectory.deleteHosp(hosp);
+            txtHospname.setText("");
+            cmbComm.setSelectedIndex(0);
+            cmbRate.setSelectedIndex(0);
+            populateTabHosp();
+            
+       }
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+    private void populateTabHosp() {
         
         DefaultTableModel model = (DefaultTableModel) tabHosp.getModel();
         
         model.setRowCount(0);
         for(Hospital ho : hospDirectory.getHospDirectory()){
             Object[] row = new Object[4];
-            row[0] = ho.hname;
+            row[0] = ho;
             row[1] = ho.getCommunity().getComm();
             row[2] = ho.getCommunity().getCity();
             row[3] = ho.ratings;
@@ -316,12 +360,12 @@ public class HospitalPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.JComboBox<String> cmbComm;
     private javax.swing.JComboBox<String> cmbRate;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
